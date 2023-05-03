@@ -38,6 +38,8 @@ export default function Register() {
         name: data.name,
         username: data.username,
       })
+
+      await router.push('/register/connect-calendar')
     } catch (err) {
       if (err instanceof AxiosError && err?.response?.data?.message) {
         alert(err.response.data.message)
@@ -84,11 +86,7 @@ export default function Register() {
 
         <label>
           <Text size="sm">Nome completo</Text>
-          <TextInput
-            prefix="ignite.com/"
-            placeholder="Seu nome"
-            {...register('name')}
-          />
+          <TextInput placeholder="Seu nome" {...register('name')} />
 
           {errors.name && (
             <FormError size="sm">{errors.name.message}</FormError>
